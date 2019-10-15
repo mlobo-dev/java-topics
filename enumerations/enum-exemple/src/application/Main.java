@@ -11,6 +11,7 @@ public class Main {
 		Order order = new Order(1, new Date(), OrderStatus.PENDING_PAYMENT);
 
 		System.out.println(order);
+		System.out.println(OrderStatus.values());
 	}
 
 }
