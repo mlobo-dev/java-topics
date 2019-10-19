@@ -49,7 +49,7 @@ public class ConnectionFactory {
 			}
 		}
 	}
-	
+
 	public static void closeConnection(Connection con, Statement stm) {
 		if (con != null) {
 			try {
@@ -60,7 +60,7 @@ public class ConnectionFactory {
 			}
 		}
 	}
-	
+
 	public static void closeConnection(Connection con, Statement stm, ResultSet rs) {
 		if (con != null) {
 			try {
@@ -72,7 +72,17 @@ public class ConnectionFactory {
 			}
 		}
 	}
-	
-	
+
+	public static void closeConnection(Statement stm, ResultSet rs) {
+		if (con != null) {
+			try {
+
+				stm.close();
+				rs.close();
+			} catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+		}
+	}
 
 }
