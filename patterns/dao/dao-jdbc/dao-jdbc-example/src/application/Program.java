@@ -24,10 +24,17 @@ public class Program {
 	
 		List<Seller> list = sellerDao.findByDepartment(department);
 		
-		for (Seller seller2 : list) {
-			System.out.println(seller2);
+		for (Seller s : list) {
+			System.out.println(s);
 		}
-
+		
+		System.out.println();
+		
+		System.out.println("=== TEST 3: seller findAll ===");
+		list = sellerDao.findAll();
+		for (Seller s : list) {
+			System.out.println(s);
+		}
 	}
 
 }
