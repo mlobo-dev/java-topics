@@ -37,12 +37,17 @@ public class Program {
 			System.out.println(s);
 		}
 
+		System.out.println();
+		
 		System.out.println("=== TEST 4: seller insert ===");
 		Department dep = new Department(7, "Education");
 		Seller s2 = new Seller(null, "Greg", "greg@mail", new Date(), 5000.0, department);
 		sellerDao.insert(s2);
 		System.out.println("Inserted! New ID: " + s2.getId());
 
+		
+		System.out.println();
+		
 		System.out.println("=== TEST 5: seller update ===");
 		seller = sellerDao.findById(1);
 		System.out.println("Original Name: " + seller.getName());
@@ -51,6 +56,13 @@ public class Program {
 		System.out.println("New Name: " + seller.getName());
 		sellerDao.update(seller);
 		System.out.println("Update Successfuly");
+		
+		System.out.println();
+		
+		System.out.println("=== TEST 6: seller delete ===");
+		
+		sellerDao.deleteById(1);
+		System.out.println("Delete successfuly");
 	}
 
 }
