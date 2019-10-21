@@ -85,4 +85,28 @@ public class ConnectionFactory {
 		}
 	}
 
+	public static void closeStatement(Statement stm) {
+		if (con != null) {
+			try {
+
+				stm.close();
+
+			} catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+		}
+	}
+	
+	public static void closeResultSet(ResultSet rs) {
+		if (con != null) {
+			try {
+
+				rs.close();
+
+			} catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+		}
+	}
+
 }
