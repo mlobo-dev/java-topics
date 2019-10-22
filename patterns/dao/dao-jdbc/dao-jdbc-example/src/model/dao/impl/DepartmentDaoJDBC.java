@@ -2,6 +2,7 @@ package model.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -75,7 +76,29 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 	@Override
 	public Department findById(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement stm = null;
+		ResultSet rs = null;
+
+		try {
+			stm = con.prepareStatement("SELECT * FROM department WHERE Id = ?");
+
+			stm.setInt(1, id);
+			rs = stm.executeQuery();
+			
+			
+			if(rs.next()) {
+				Department dep =new Department();
+				dep.setId(rs.getInt("Id"));
+				dep.setName(rs.getString("Name"));
+				return dep;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeStatement(stm);
+		}
 		return null;
 	}
 
