@@ -12,7 +12,7 @@ import model.entities.Department;
 public class DepartmentDaoJDBC implements DepartmentDao {
 
 	private Connection con = ConnectionFactory.getConnection();
-	
+
 	public DepartmentDaoJDBC(Connection con) {
 		this.con = con;
 	}
@@ -56,7 +56,20 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement stm = null;
+
+		try {
+			stm = con.prepareStatement("DELETE FROM department WHERE Id = ?");
+
+			stm.setInt(1, id);
+			stm.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeStatement(stm);
+		}
 
 	}
 

@@ -23,6 +23,14 @@ public class Program2 {
 		dep.setId(6);
 		depDao.update(dep);
 		System.out.println("update Successfuly");
+		
+		System.out.println();
+		
+		System.out.println("==== TEST 4 : Department delete ====");
+		
+		dep.setId(8);
+		depDao.deleteById(dep.getId());
+		System.out.println("delete Successfuly");
 	}
 
 }
